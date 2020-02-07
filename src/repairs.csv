@@ -1,0 +1,7 @@
+ticket_number,repair_type,start_date,complete
+1829,H,12/8/2019,true
+1830,S,12/8/2019,false
+
+1832,D,12/9/2019,true
+1842,U,12/10/2019,false
+1843,U,12/10/2019,true
