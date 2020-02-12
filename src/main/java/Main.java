@@ -1,4 +1,8 @@
+import com.google.gson.Gson;
+import com.google.gson.stream.JsonReader;
 import com.opencsv.CSVReader;
+import com.opencsv.exceptions.CsvValidationException;
+import org.h2.tools.Csv;
 
 import java.io.*;
 import java.sql.*;
@@ -11,11 +15,23 @@ public class Main {
     private static Statement stmt = null;
     private static PreparedStatement pstmt;
 
-    public static void main(String[] args){
+    public static void main(String[] args) throws IOException, CsvValidationException {
 
         Main main = new Main();
         main.initialize();
         main.parseCSV();
+
+        CsvParser csvP = new CsvParser("src/Data/bookstore_report2.csv");
+
+
+
+        Gson gson = new Gson();
+        JsonReader jRead = new JsonReader(new FileReader("src/Data/authors.json"));
+        AuthorParser[] authors = gson.fromJson(jRead, AuthorParser.class);
+
+        for(var element : authors){
+            System.out.println(element);
+        }
 
     }
 
